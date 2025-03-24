@@ -1,0 +1,325 @@
+/* Template: ワークフロー申請管理
+   Author: Brite Solutions
+   Created: Dec 2021
+   Description: ...
+*/
+
+/*****************************************
+Table Of Contents:
+
+01. General Styles
+02. Layout Admin
+03. Login Admin
+******************************************/
+
+/******************************/
+/*     01. General Styles     */
+/******************************/
+.cursor-pointer {
+    cursor: pointer;
+}
+/*
+* textarea
+*/
+textarea {
+    resize: none;
+}
+/*
+* custom width
+*/
+.w-50px {
+    width: 50px;
+}
+.w-70px {
+    width: 70px;
+}
+.w-120px {
+    width: 120px;
+}
+.w-130px {
+    width: 130px;
+}
+.w-150px {
+    width: 150px;
+}
+.w-160px {
+    width: 160px;
+}
+.w-200px {
+    width: 200px;
+}
+.w-300px {
+    width: 300px;
+}
+.w-90 {
+    width: 90%;
+}
+@media (min-width: 768px) {
+    .w-md-90 {
+        width: 90%;
+    }
+}
+@media (min-width: 1200px) {
+    .w-xl-49p8 {
+        width: 49.8%;
+    }
+}
+
+@media (min-width: 1440px) {
+    .variation-img {
+        width: 80% !important;
+    }
+}
+
+/*
+* custom height
+*/
+.h-46px {
+    height: 46px;
+}
+/*
+* custom font size
+*/
+.fs-1 {
+    
+}
+.fs-2 {
+    
+}
+.fs-3 {
+    
+}
+.fs-4 {
+    
+}
+.fs-5 {
+    
+}
+.fs-6 {
+    font-size: 1rem;
+}
+/*
+* custom line-height
+*/
+.lh-38px {
+    line-height: 38px;
+}
+/*
+* custom color background
+*/
+.bg-user-primary, .bg-user-primary>a {
+    color: #fff!important;
+}
+.bg-user-primary {
+    background-color: #afaba8!important;
+}
+.bg-user-secondary {
+    background-color: #d9d9d9!important;
+}
+/*
+* custom button
+*/
+.btn-user-primary {
+    color: #fff;
+    background-color: #7e7e7e;
+    border-color: #7e7e7e;
+    box-shadow: none;
+}
+.btn-user-primary:hover {
+    color: #fff;
+    background-color: #929292;
+    border-color: #929292;
+}
+.btn-user-primary.disabled,
+.btn-user-primary:disabled {
+    color: #fff;
+    background-color: #8c8c8c;
+    border-color: #8c8c8c;
+}
+.btn-user-secondary {
+    color: #fff;
+    background-color: #bfbfbf;
+    border-color: #bfbfbf;
+    box-shadow: none;
+}
+.btn-user-secondary:hover {
+    color: #fff;
+    background-color: #b5b3b3;
+    border-color: #b5b3b3;
+}
+.btn-user-secondary.disabled,
+.btn-user-secondary:disabled {
+    color: #fff;
+    background-color: #cfcccc;
+    border-color: #cfcccc;
+}
+/*
+* header
+*/
+.user-name {
+    max-width: 140px;
+    padding: .35rem .5rem 0;
+}
+/*
+* sidebar menu
+*/
+.nav-link {
+    padding-right: .5rem;
+}
+.menu-2-line {
+    margin-top: -3px !important;
+}
+.nav-sidebar .nav-link>p.menu-2-line>.right:nth-child(2) {
+    right: 1rem;
+}
+.envelope-badge {
+    font-size: .6rem;
+    font-weight: 300;
+    padding: 2px 4px;
+    position: absolute;
+    right: 112px;
+    top: 7px;
+}
+/*
+* page title
+*/
+.page-title {
+    padding-left: 10px;
+    border-left: 3px solid #dee2e6;
+}
+/*
+* table
+*/
+.table.table-head-fixed thead tr td, 
+.table.table-head-fixed thead tr th {
+    border-top-width: 0;
+}
+.table.table-head-fixed.table-bordered>:not(caption)>* {
+    border-top-width: 0;
+}
+.table-c {
+    max-width: 100%;
+}
+.copy-function {
+    float: right;
+    cursor: pointer;
+    font-size: .75rem;
+}
+.btn-change-status {
+    position: absolute;
+    right: 5px;
+    top: 7px;
+}
+/*.table-small-py td,
+.table-small-py th {
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+}*/
+.unread td {
+    font-weight: 700;
+}
+@media (min-width: 768px) {
+    .table-c {
+        max-width: 65%;
+    }
+}
+@media (min-width: 1200px) {
+    .second-table-q {
+        display: table-row !important;
+    }
+}
+/*
+* input
+*/
+.text-after-input {
+    font-size: 1rem;
+}
+/*
+* modal
+*/
+
+/*
+* back to top
+*/
+#back-to-top {
+    display: inline-block;
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    bottom: 30px;
+    right: 35px;
+    background-color: #6c757d;
+    color: #fff;
+    transition: background-color .3s, opacity .5s, visibility .5s;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1000;
+}
+#back-to-top i{
+    font-size: 2rem;
+    line-height: 50px;
+}
+#back-to-top:hover {
+    cursor: pointer;
+    background-color: #333;
+}
+#back-to-top:active {
+    background-color: #555;
+}
+#back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+/*
+* datetimepicker
+*/
+.bootstrap-datetimepicker-widget table td, 
+.bootstrap-datetimepicker-widget table th {
+    border: none;
+}
+
+/****************************/
+/*     02. Layout Admin     */
+/****************************/
+.user-detail-padding {
+    position: relative;
+    padding-left: 36px !important;
+    padding-right: 36px !important;
+}
+.user-note {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    font-size: 1.1rem;
+}
+@media (min-width: 768px) {
+    .design-wrapper {
+        height: calc(100% - 46px);
+    }
+}
+
+/*
+* upload file drag drop in modal
+*/
+.parts_file label {
+    display: block;
+    position: relative;
+    border: 3px dashed #B3B3B3;
+    font-size: 1.125rem;
+    line-height: 1.35;
+    font-weight: bold;
+    text-align: center;
+    padding: 40px 20px;
+    border-radius: 10px;
+}
+.parts_file input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+}
+.text-area-auto-height {
+    overflow: hidden;
+}

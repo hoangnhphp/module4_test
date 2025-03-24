@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/html">
+<head th:replace="~{layout/head::head ('Thêm mới giao dịch')}">
+<body class="hold-transition sidebar-mini layout-fixed text-sm">
+<div class="wrapper">
+  <th:block th:insert="~{layout/sidebar::sidebar}"></th:block>
+  <div class="content-wrapper">
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="page-title m-0">Thêm mới giao dịch</h1>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <th:block th:insert="~{layout/flash::flash}"></th:block>
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card card-default">
+              <div class="card-body">
+                <form method="post" action="/deal/create" id="form-create" th:object="${deal}">
+                  <div class="row form-group align-items-center">
+                    <label class="col-sm-2 col-form-label">Mã giao dịch</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control form-control-sm" th:classappend="${#fields.hasErrors('code')} ? 'is-invalid' : ''" th:field="*{code}">
+                      <span class="invalid-feedback" role="alert">
+                          <strong th:if="${#fields.hasErrors('code')}" th:text="${#fields.errors('code')[0]}"></strong>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="row form-group align-items-center">
+                    <label class="col-sm-2 col-form-label" for="customer">Tên khách hàng</label>
+                    <div class="col-sm-10">
+                      <select class="form-control form-control-sm" id="customer" th:field="*{customer}" name="customer">
+                        <option value="">Vui lòng chọn khách hàng</option>
+                        <option th:each="customer : ${customers}" th:value="${customer.id}" th:text="${customer.name}"></option>
+                      </select>
+                      <span class="text-danger" style="font-size: 80%" role="alert">
+                          <strong th:if="${#fields.hasErrors('customer')}" th:text="${#fields.errors('customer')[0]}"></strong>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="row form-group align-items-center">
+                    <label class="col-sm-2 col-form-label">Loại bất động sản</label>
+                    <div class="col-sm-10">
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input apartment-check" type="radio" th:field="*{dealType}" id="dealType2" value="2">
+                        <label class="form-check-label" for="dealType2">Đất</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input apartment-check" type="radio" th:field="*{dealType}" name="dealType" id="dealType1" value="1" checked>
+                        <label class="form-check-label" for="dealType1">Nhà đất </label>
+                      </div>
+                      <div class="text-danger" style="font-size: 80%" id="pattern_err">
+                        <strong th:if="${#fields.hasErrors('dealType')}" th:text="${#fields.errors('dealType')[0]}"></strong>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row form-group align-items-center">
+                    <label class="col-sm-2 col-form-label col-form-label-sm">Ngày giao dịch</label>
+                    <div class="col-sm-10">
+                        <div class="input-group datepicker" id="deal_date" data-target-input="nearest">
+                          <input type="text" class="form-control form-control-sm datepicker datetimepicker-input" th:field="*{dealDate}" th:classappend="${#fields.hasErrors('dealDate')} ? 'is-invalid' : ''" data-toggle="datetimepicker" placeholder="dd/MM/yyyy"/>
+                          <div class="input-group-append">
+                            <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                          </div>
+                        </div>
+                        <span class="text-danger" style="font-size: 80%;" role="alert">
+                            <strong th:if="${#fields.hasErrors('dealDate')}" th:text="${#fields.errors('dealDate')[0]}"></strong>
+                        </span>
+                      <!-- /.row -->
+                    </div>
+                    <!-- /.col -->
+                  </div>
+                  <div class="row form-group align-items-center">
+                    <label class="col-sm-2 col-form-label">Đơn giá (VND)</label>
+                    <div class="col-sm-10">
+                      <input type="number" min="500000" class="form-control form-control-sm" th:classappend="${#fields.hasErrors('price')} ? 'is-invalid' : ''" th:field="*{price}">
+                      <span class="invalid-feedback" role="alert">
+                          <strong th:if="${#fields.hasErrors('price')}" th:text="${#fields.errors('price')[0]}"></strong>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="row form-group align-items-center">
+                    <label class="col-sm-2 col-form-label">Diện tích (m2)</label>
+                    <div class="col-sm-10">
+                      <input type="number" min="20" class="form-control form-control-sm" th:classappend="${#fields.hasErrors('acreage')} ? 'is-invalid' : ''" th:field="*{acreage}">
+                      <span class="invalid-feedback" role="alert">
+                          <strong th:if="${#fields.hasErrors('acreage')}" th:text="${#fields.errors('acreage')[0]}"></strong>
+                      </span>
+                    </div>
+                  </div>
+                  <input type="hidden" th:field="*{id}">
+                  <div class="text-center mt-3">
+                    <div class="row align-items-center">
+                      <div class="col-6 text-right">
+                        <div class="mt-2">
+                          <button type="submit" class="btn btn-primary w-120px">
+                            Lưu
+                          </button>
+                        </div>
+                      </div>
+                      <div class="col-6 text-left">
+                        <div class="mt-2">
+                          <a role="button" href="/deal" class="btn btn-secondary w-120px">
+                            Hủy
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <!-- /.card-body -->
+            </div>
+          </div>
+          <!-- ./col -->
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+  </div>
+</div>
+<th:block th:replace="~{layout/script::script}">
+</th:block>
+</body>
+</html>

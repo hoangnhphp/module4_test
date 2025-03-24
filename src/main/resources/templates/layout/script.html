@@ -1,0 +1,25 @@
+<th:block th:fragment="script">
+    <!-- jQuery -->
+    <script src="/plugins/jquery/jquery.min.js"></script>
+    <!-- jQuery UI 1.11.4 -->
+    <script src="/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+        $.widget.bridge('uibutton', $.ui.button);
+    </script>
+    <!-- Bootstrap 4 -->
+    <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Moment JS -->
+    <script src="/plugins/moment/moment-with-locales.min.js"></script>
+    <script src="/plugins/moment/moment-timezone.js"></script>
+    <!-- Tempusdominus Bootstrap 4 -->
+    <script src="/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.js"></script>
+    <script src="/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <script src="/plugins/jquery.tagsinput/jquery.tagsinput-revisited.js"></script>
+    <script src="/plugins/fullcalendar/main.min.js"></script>
+    <!-- AdminLTEApp -->
+    <script src="/dist/js/adminlte.min.js"></script>
+    <!-- common js -->
+    <script src="/dist/js/brite.common.js"></script>
+    <script src="/js/main.js"></script>
+</th:block>

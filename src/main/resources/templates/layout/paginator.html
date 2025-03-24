@@ -1,0 +1,28 @@
+<th:block th:fragment="pagination (page, url, queryParams)">
+    <nav aria-label="Page navigation" th:if="${page.totalPages > 1}">
+        <ul class="pagination pagination-sm justify-content-center">
+            <!-- Xử lý queryParams đúng cách -->
+            <th:block th:with="queryString=${queryParams != '' ? '&' + queryParams : ''}">
+                <!-- Nút "Trước" -->
+                <li class="page-item" th:classappend="${page.first} ? 'disabled'"
+                    th:utext="|<a class='page-link border-0' href='${url}?page=${page.number}${queryString}'>Trước</a>|"
+                    th:if="${!page.first}">
+                </li>
+
+                <!-- Số trang -->
+                <th:block th:each="i : ${#numbers.sequence(0, page.totalPages - 1)}">
+                    <li class="page-item" th:classappend="${i == page.number} ? 'active'">
+                        <th:block
+                                th:utext="|<a class='page-link border-0' href='${url}?page=${i+1}${queryString}'>${i+1}</a>|"></th:block>
+                    </li>
+                </th:block>
+
+                <!-- Nút "Tiếp" -->
+                <li class="page-item" th:classappend="${page.last} ? 'disabled'"
+                    th:utext="|<a class='page-link border-0' href='${url}?page=${page.number + 2}${queryString}'>Sau</a>|"
+                    th:if="${!page.last}">
+                </li>
+            </th:block>
+        </ul>
+    </nav>
+</th:block>

@@ -1,0 +1,8 @@
+<th:block th:fragment="flash">
+    <div th:if="${message != null}" class="alert flash_message alert-success px-3 py-2 mb-2" role="alert">
+        <span th:text="${message}"></span>
+    </div>
+    <div th:if="${messageError != null}" class="alert flash_message alert-danger px-3 py-2 mb-2" role="alert">
+        <span th:text="${messageError}"></span>
+    </div>
+</th:block>
